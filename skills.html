@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Skills | Feng Jing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@200;400;600;700;800&amp;family=Manrope:wght@300;400;500;700&amp;family=Great+Vibes&amp;family=Indie+Flower&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            secondary: "#a53173",
+            tertiary: "#684cb6",
+            "primary-container": "#f9e287",
+            background: "#fff7fa",
+            "on-surface": "#392f38",
+            "on-surface-variant": "#675c65",
+          },
+          fontFamily: {
+            headline: ["Plus Jakarta Sans", "sans-serif"],
+            body: ["Manrope", "sans-serif"],
+            handwritten: ["Great Vibes", "cursive"],
+          },
+          animation: {
+            float: "float 6s ease-in-out infinite",
+          },
+          keyframes: {
+            float: {
+              "0%, 100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+
+    .watercolor-bg {
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 204, 229, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(204, 229, 255, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(229, 204, 255, 0.4) 0%, transparent 60%),
+        linear-gradient(to bottom, #ffffff 0%, #fff7fa 10%, #fff7fa 90%, #ffffff 100%);
+      background-attachment: fixed;
+    }
+
+    .sketchy-card {
+      border: 2px solid #a5317330;
+      border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+    .sketchy-card:hover {
+      transform: scale(1.02) rotate(1deg);
+      background: rgba(255, 255, 255, 0.7);
+      border-color: #a5317380;
+      box-shadow: 0 15px 30px rgba(165, 49, 115, 0.1);
+    }
+
+    .skill-bar-container {
+      height: 10px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      position: relative;
+      transform-origin: left center;
+      transform: scaleX(0);
+      animation: skillBarReveal 2s ease-out forwards;
+    }
+    .skill-bar-fill::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: sparkle 2s infinite;
+    }
+    @keyframes skillBarReveal {
+      to {
+        transform: scaleX(1);
+      }
+    }
+    @keyframes sparkle {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .floating-1 {
+      animation: float 6s ease-in-out infinite;
+    }
+    .floating-2 {
+      animation: float 7s ease-in-out infinite 1s;
+    }
+    .floating-3 {
+      animation: float 8s ease-in-out infinite 0.5s;
+    }
+    .floating-4 {
+      animation: float 5.5s ease-in-out infinite 1.5s;
+    }
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* 与首页 Feng Jing 一致：Caveat + 主粉，配淡黄柔滑曲线装饰 */
+    .skill-title-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      padding: 0 clamp(2rem, 8vw, 5rem);
+    }
+    .skill-main-title {
+      font-family: "Caveat", cursive;
+      font-weight: 700;
+      color: #e878a8;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      position: relative;
+      z-index: 2;
+    }
+    .skill-title-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
+    }
+    .skill-title-deco path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .skill-title-deco--a {
+      left: -4%;
+      top: 18%;
+      width: clamp(100px, 22vw, 200px);
+      height: auto;
+      opacity: 0.88;
+      transform: rotate(-8deg);
+    }
+    .skill-title-deco--b {
+      right: -6%;
+      bottom: -8%;
+      width: clamp(120px, 26vw, 240px);
+      height: auto;
+      opacity: 0.82;
+      transform: rotate(6deg);
+    }
+    .skill-title-deco--c {
+      left: 18%;
+      bottom: -18%;
+      width: clamp(90px, 20vw, 170px);
+      height: auto;
+      opacity: 0.65;
+      transform: rotate(-3deg);
+    }
+  </style>
+</head>
+<body class="font-body watercolor-bg text-on-surface selection:bg-primary-container min-h-screen">
+  <header class="fixed top-0 w-full z-50 bg-white/30 backdrop-blur-md">
+    <div class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="font-handwritten text-4xl text-secondary lowercase">f. j.</a>
+      </div>
+      <nav class="hidden md:flex gap-10 items-center">
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="index.html">Home Page</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-secondary border-b-2 border-primary-container pb-1" href="skills.html" aria-current="page">Skills</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="process.html">Process</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="portfolio.html">Portfolio</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="connect.html">Connect</a>
+      </nav>
+      <a href="index.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0" aria-label="返回首页">
+        <img alt="Feng Jing" src="assets/avatar.png" width="40" height="40" class="w-full h-full object-cover" />
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto pt-40 pb-32 px-6">
+    <div class="text-center mb-24 relative">
+      <div class="skill-title-wrap mx-auto mb-4">
+        <svg class="skill-title-deco skill-title-deco--a" viewBox="0 0 200 120" aria-hidden="true">
+          <path
+            d="M 12 98 C 38 72 32 28 68 18 C 104 8 142 42 188 22"
+            stroke="rgba(255, 244, 200, 0.95)"
+            stroke-width="5"
+          />
+          <path
+            d="M 24 102 C 48 78 44 36 76 26"
+            stroke="rgba(255, 250, 220, 0.75)"
+            stroke-width="2.5"
+          />
+        </svg>
+        <svg class="skill-title-deco skill-title-deco--b" viewBox="0 0 220 100" aria-hidden="true">
+          <path
+            d="M 8 48 C 52 8 120 4 168 32 C 198 52 210 78 204 92"
+            stroke="rgba(254, 240, 190, 0.9)"
+            stroke-width="5.5"
+          />
+          <path
+            d="M 28 56 C 70 22 128 18 176 44"
+            stroke="rgba(255, 248, 210, 0.65)"
+            stroke-width="2.2"
+          />
+        </svg>
+        <svg class="skill-title-deco skill-title-deco--c" viewBox="0 0 180 80" aria-hidden="true">
+          <path
+            d="M 6 40 Q 88 4 172 36"
+            stroke="rgba(253, 236, 175, 0.7)"
+            stroke-width="4"
+          />
+        </svg>
+        <h1 class="skill-main-title text-7xl md:text-9xl">Skill Essence</h1>
+      </div>
+      <p class="font-headline font-light tracking-widest text-on-surface-variant italic max-w-lg mx-auto">
+        Where the precision of logic meets the ethereal flow of digital art.
+      </p>
+      <div class="absolute -top-10 left-1/4 opacity-10 pointer-events-none" aria-hidden="true">
+        <span class="material-symbols-outlined text-8xl text-tertiary">brush</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="sketchy-card p-10 floating-1">
+        <div class="flex justify-between items-center mb-10">
+          <h3 class="font-handwritten text-4xl text-secondary">
+            AIO 绘图 <span class="text-sm block font-headline uppercase tracking-tighter opacity-60">AI Drawing</span>
+          </h3>
+          <span class="material-symbols-outlined text-secondary opacity-30 text-4xl" aria-hidden="true">auto_fix_high</span>
+        </div>
+        <div class="space-y-8">
+          <div>
+            <div class="flex justify-between font-headline text-xs mb-2 tracking-widest uppercase text-on-surface-variant">
+              <span>Midjourney</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar-container">
+              <div class="skill-bar-fill bg-secondary" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between font-headline text-xs mb-2 tracking-widest uppercase text-on-surface-variant">
+              <span>即梦 (Jimeng)</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar-container">
+              <div class="skill-bar-fill bg-tertiary" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between font-headline text-xs mb-2 tracking-widest uppercase text-on-surface-variant">
+              <span>Stable Diffusion</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar-container">
+              <div class="skill-bar-fill bg-primary-container" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sketchy-card p-10 floating-2">
+        <div class="flex justify-between items-center mb-10">
+          <h3 class="font-handwritten text-4xl text-tertiary">
+            图像处理 <span class="text-sm block font-headline uppercase tracking-tighter opacity-60">Image Processing</span>
+          </h3>
+          <span class="material-symbols-outlined text-tertiary opacity-30 text-4xl" aria-hidden="true">palette</span>
+        </div>
+        <div class="space-y-8">
+          <div class="flex items-center gap-6">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-tertiary/10 text-tertiary font-bold shrink-0">Ps</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between font-headline text-xs mb-1 uppercase text-on-surface-variant">
+                <span>Photoshop</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar-container">
+                <div class="skill-bar-fill bg-tertiary" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-6">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-container/20 text-on-surface font-bold shrink-0">Ai</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between font-headline text-xs mb-1 uppercase text-on-surface-variant">
+                <span>Illustrator</span>
+                <span>70%</span>
+              </div>
+              <div class="skill-bar-container">
+                <div class="skill-bar-fill bg-primary-container" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 rounded-2xl overflow-hidden opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+          <img
+            alt="Artistic Workspace"
+            class="w-full h-32 object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQSvE5Ey9tdlXkb9blc_xFraAXYt2S1rDH6RwGvRGTwMLBlBS3FRPW4NRzx2iHGhkKTqFwvrVfwVnd11_8YWbm9He-NswqntR3rr7o0RFz9B3uewxH3565edFgs_nhMd39bWFso4EFYjnxx5PvEX6vtCNSwyol4znvRPaQW58VR9L8SzszERfNwQvE5W_01cZeCTgTUDlhj20zDq4GF8S_0EOabsuFqdxNF0bQOraCABbjojcyB9sb83taEK6dp6GCIaacmZqCdhVH"
+            width="800"
+            height="200"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <div class="sketchy-card p-10 floating-3">
+        <div class="flex justify-between items-center mb-10">
+          <h3 class="font-handwritten text-4xl text-on-surface">
+            视频制作 <span class="text-sm block font-headline uppercase tracking-tighter opacity-60">Video Production</span>
+          </h3>
+          <span class="material-symbols-outlined text-primary-container text-4xl" aria-hidden="true">movie</span>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-white/40 p-5 rounded-2xl border border-white/60 hover:bg-white/80 transition-colors">
+            <div class="flex justify-between items-end mb-3">
+              <div>
+                <p class="font-headline font-bold text-sm">Seedance</p>
+                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest">AI Video Synthesis</p>
+              </div>
+              <span class="text-xs font-headline text-secondary">60%</span>
+            </div>
+            <div class="skill-bar-container h-1.5">
+              <div class="skill-bar-fill bg-secondary/60" style="width: 60%"></div>
+            </div>
+          </div>
+          <div class="bg-white/40 p-5 rounded-2xl border border-white/60 hover:bg-white/80 transition-colors">
+            <div class="flex justify-between items-end mb-3">
+              <div>
+                <p class="font-headline font-bold text-sm">剪映 (CapCut)</p>
+                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Creative Editing</p>
+              </div>
+              <span class="text-xs font-headline text-tertiary">90%</span>
+            </div>
+            <div class="skill-bar-container h-1.5">
+              <div class="skill-bar-fill bg-tertiary/60" style="width: 90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sketchy-card p-10 floating-4 bg-primary-container/5">
+        <div class="flex justify-between items-center mb-10">
+          <h3 class="font-handwritten text-4xl text-secondary">
+            证书 <span class="text-sm block font-headline uppercase tracking-tighter opacity-60">Certificates</span>
+          </h3>
+          <span class="material-symbols-outlined text-secondary opacity-20 text-4xl" aria-hidden="true">verified</span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <div class="px-6 py-4 bg-white/60 border border-secondary/10 rounded-full font-headline text-sm text-secondary shadow-sm hover:scale-110 transition-transform cursor-default">
+            计算机二级证书
+          </div>
+          <div class="px-6 py-4 bg-white/60 border border-tertiary/10 rounded-full font-headline text-sm text-tertiary shadow-sm hover:scale-110 transition-transform cursor-default">
+            英语 CET-4
+          </div>
+          <div class="px-6 py-4 bg-white/60 border border-primary-container/30 rounded-full font-headline text-sm text-on-surface shadow-sm hover:scale-110 transition-transform cursor-default">
+            英语 CET-6
+          </div>
+        </div>
+        <div class="mt-12 text-center opacity-20" aria-hidden="true">
+          <span class="material-symbols-outlined text-6xl">school</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 下一页引导按钮 -->
+  <div class="pb-20 text-center relative z-20">
+    <a href="process.html" class="next-page-btn">Next Page →</a>
+  </div>
+
+  <footer class="w-full py-16 flex flex-col items-center gap-4 bg-transparent">
+    <p class="font-body italic text-[10px] text-on-surface-variant opacity-60">
+      © 2024 The Ethereal Sketchbook. Crafted by Feng Jing with love &amp; AI.
+    </p>
+    <div class="mt-4 flex gap-3 opacity-20" aria-hidden="true">
+      <span class="material-symbols-outlined text-sm">favorite</span>
+      <span class="material-symbols-outlined text-sm">draw</span>
+      <span class="material-symbols-outlined text-sm">auto_awesome</span>
+    </div>
+  </footer>
+</body>
+</html>

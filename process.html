@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Work Experience | Feng Jing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@200;400;600;700;800&amp;family=Manrope:wght@300;400;500;700&amp;family=Great+Vibes&amp;family=Indie+Flower&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            secondary: "#a53173",
+            tertiary: "#684cb6",
+            "primary-container": "#f9e287",
+            background: "#fff7fa",
+            "on-surface": "#392f38",
+            "on-surface-variant": "#675c65",
+          },
+          fontFamily: {
+            headline: ["Plus Jakarta Sans", "sans-serif"],
+            body: ["Manrope", "sans-serif"],
+            handwritten: ["Great Vibes", "cursive"],
+          },
+          animation: {
+            float: "float 6s ease-in-out infinite",
+          },
+          keyframes: {
+            float: {
+              "0%, 100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+
+    .watercolor-bg {
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 204, 229, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(204, 229, 255, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(229, 204, 255, 0.4) 0%, transparent 60%),
+        linear-gradient(to bottom, #ffffff 0%, #fff7fa 10%, #fff7fa 90%, #ffffff 100%);
+      background-attachment: fixed;
+    }
+
+    /* ===== Title Styles (consistent with index + skills) ===== */
+    .proc-title-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      padding: 0 clamp(2rem, 8vw, 5rem);
+    }
+    .proc-main-title {
+      font-family: "Caveat", cursive;
+      font-weight: 700;
+      color: #e878a8;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      position: relative;
+      z-index: 2;
+    }
+    .proc-title-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
+    }
+    .proc-title-deco path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .proc-title-deco--a {
+      left: -4%;
+      top: 18%;
+      width: clamp(100px, 22vw, 200px);
+      height: auto;
+      opacity: 0.88;
+      transform: rotate(-8deg);
+    }
+    .proc-title-deco--b {
+      right: -6%;
+      bottom: -8%;
+      width: clamp(120px, 26vw, 240px);
+      height: auto;
+      opacity: 0.82;
+      transform: rotate(6deg);
+    }
+    .proc-title-deco--c {
+      left: 18%;
+      bottom: -18%;
+      width: clamp(90px, 20vw, 170px);
+      height: auto;
+      opacity: 0.65;
+      transform: rotate(-3deg);
+    }
+
+    /* ===== Timeline: Pink dashed line only ===== */
+    .timeline-track {
+      position: relative;
+      padding-top: 2.5rem;
+    }
+    .timeline-track::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 2.5rem;
+      bottom: 0;
+      width: 2px;
+      transform: translateX(-50%);
+      border-left: 2px dashed rgba(165, 49, 115, 0.45);
+      z-index: 0;
+    }
+    @media (max-width: 768px) {
+      .timeline-track::before {
+        left: 20px;
+        top: 2rem;
+      }
+    }
+
+    /* ===== Yellow accent dots (removed) ===== */
+    /* removed to keep timeline clean */
+    .achievement-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.82rem;
+      color: #392f38;
+      line-height: 1.6;
+    }
+
+    /* ===== Hand-drawn dots (already defined above) ===== */
+    /* kept empty to remove old node block */
+
+    /* ===== Work Card ===== */
+    .work-card {
+      position: relative;
+      border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(165, 49, 115, 0.15);
+      padding: 2.5rem;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                  box-shadow 0.4s ease,
+                  background 0.3s ease,
+                  border-color 0.3s ease;
+      overflow: visible;
+    }
+    .work-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,204,229,0.3), rgba(229,204,255,0.3));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .work-card:hover {
+      transform: scale(1.025) rotate(0.5deg);
+      background: rgba(255, 255, 255, 0.65);
+      border-color: rgba(165, 49, 115, 0.4);
+      box-shadow: 0 20px 50px rgba(165, 49, 115, 0.12), 0 8px 20px rgba(104, 76, 182, 0.08);
+    }
+    .work-card:hover::before {
+      opacity: 1;
+    }
+    .work-card .card-float-shadow {
+      position: absolute;
+      inset: 8px -6px -20px -6px;
+      border-radius: inherit;
+      background: rgba(165, 49, 115, 0.06);
+      filter: blur(12px);
+      z-index: -2;
+      transition: opacity 0.4s ease;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+    .work-card:hover .card-float-shadow {
+      opacity: 2;
+      animation-play-state: paused;
+    }
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* ===== Timeline Connector Line ===== */
+    .card-connector {
+      position: absolute;
+      top: 1.5rem;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(232, 120, 168, 0.4), transparent);
+    }
+    .card-connector--right {
+      left: -2px;
+      height: 50%;
+    }
+    .card-connector--left {
+      right: -2px;
+      height: 50%;
+    }
+    @media (max-width: 768px) {
+      .card-connector--right,
+      .card-connector--left {
+        left: -32px;
+        right: auto;
+        width: 28px;
+        background: linear-gradient(to right, rgba(232, 120, 168, 0.4), transparent);
+        height: 2px;
+        top: 50%;
+      }
+    }
+
+    /* ===== AI Tools Chip (shown on hover) ===== */
+    .ai-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+    .work-card:hover .ai-tools {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .ai-tool-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.7rem;
+      background: rgba(249, 226, 135, 0.5);
+      border: 1px solid rgba(249, 226, 135, 0.7);
+      border-radius: 999px;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #7a6a20;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ===== Count-up ===== */
+    .count-up {
+      font-variant-numeric: tabular-nums;
+      display: inline-block;
+    }
+
+    /* ===== Scroll reveal ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== Card company badge ===== */
+    .company-badge {
+      background: linear-gradient(135deg, rgba(232,120,168,0.12), rgba(104,76,182,0.12));
+      border: 1.5px solid rgba(232,120,168,0.2);
+      border-radius: 999px;
+      padding: 0.35rem 1.1rem;
+      display: inline-block;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #a53173;
+      letter-spacing: 0.02em;
+    }
+    .role-label {
+      font-family: "Great Vibes", cursive;
+      font-size: 1.6rem;
+      color: #684cb6;
+      line-height: 1.2;
+    }
+    .date-label {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(103, 92, 101, 0.7);
+    }
+    .achievement-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.82rem;
+      color: #392f38;
+      line-height: 1.6;
+    }
+
+    /* ===== Decorative scattered dots ===== */
+    .deco-dots {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== Yellow Hand-drawn Butterflies ===== */
+    .butterfly-fly {
+      position: absolute;
+      pointer-events: none;
+      z-index: 5;
+      width: clamp(28px, 5vw, 42px);
+      height: clamp(22px, 4.5vw, 34px);
+      filter: drop-shadow(0 2px 4px rgba(249, 226, 135, 0.6));
+    }
+    .butterfly-fly--a {
+      top: 22%;
+      left: 4%;
+      animation: butterflyFlyA 18s ease-in-out infinite, butterflyFlap 0.25s ease-in-out infinite alternate;
+    }
+    .butterfly-fly--b {
+      top: 55%;
+      right: 3%;
+      animation: butterflyFlyB 22s ease-in-out infinite, butterflyFlap 0.28s ease-in-out infinite alternate-reverse;
+    }
+    .butterfly-fly--c {
+      bottom: 12%;
+      left: 55%;
+      animation: butterflyFlyC 20s ease-in-out infinite, butterflyFlap 0.22s ease-in-out infinite alternate;
+    }
+    @keyframes butterflyFlyA {
+      0%, 100% { transform: translate(0, 0) rotate(-2deg); }
+      30% { transform: translate(4vw, -6vh) rotate(2deg); }
+      60% { transform: translate(8vw, 3vh) rotate(-3deg); }
+    }
+    @keyframes butterflyFlyB {
+      0%, 100% { transform: translate(0, 0) rotate(3deg); }
+      35% { transform: translate(-5vw, 4vh) rotate(-2deg); }
+      65% { transform: translate(-8vw, -5vh) rotate(4deg); }
+    }
+    @keyframes butterflyFlyC {
+      0%, 100% { transform: translate(0, 0) rotate(2deg); }
+      40% { transform: translate(-6vw, -8vh) rotate(-3deg); }
+      70% { transform: translate(-2vw, 5vh) rotate(1deg); }
+    }
+    @keyframes butterflyFlap {
+      0% { transform: scaleY(1); }
+      100% { transform: scaleY(0.65); }
+    }
+    .butterfly-svg {
+      width: 100%;
+      height: 100%;
+      stroke: #f9e287;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+  </style>
+</head>
+<body class="font-body watercolor-bg text-on-surface selection:bg-primary-container min-h-screen">
+  <!-- Decorative yellow hand-drawn butterflies -->
+  <div class="butterfly-fly butterfly-fly--a" aria-hidden="true">
+    <svg class="butterfly-svg" viewBox="0 0 60 48" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(30 24)">
+        <path d="M 0 -2 Q -5 -8 -10 -10 Q -16 -12 -20 -8 Q -24 -4 -20 0 Q -16 4 -10 2 Q -6 0 0 -2 Z" stroke="#f9e287" fill="rgba(249,226,135,0.18)" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" />
+        <path d="M 0 -2 Q 5 -8 10 -10 Q 16 -12 20 -8 Q 24 -4 20 0 Q 16 4 10 2 Q 6 0 0 -2 Z" stroke="#f9e287" fill="rgba(249,226,135,0.18)" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" />
+        <line x1="0" y1="-2" x2="0" y2="12" stroke="#f9e287" stroke-width="1.6" stroke-linecap="round" />
+      </g>
+    </svg>
+  </div>
+  <div class="butterfly-fly butterfly-fly--b" aria-hidden="true">
+    <svg class="butterfly-svg" viewBox="0 0 60 48" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(30 24)">
+        <path d="M 0 -2 Q -6 -9 -11 -11 Q -17 -13 -21 -9 Q -25 -5 -21 -1 Q -17 3 -11 1 Q -6 -1 0 -2 Z" stroke="#f9e287" fill="rgba(249,226,135,0.14)" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" />
+        <path d="M 0 -2 Q 6 -9 11 -11 Q 17 -13 21 -9 Q 25 -5 21 -1 Q 17 3 11 1 Q 6 -1 0 -2 Z" stroke="#f9e287" fill="rgba(249,226,135,0.14)" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" />
+        <line x1="0" y1="-2" x2="0" y2="12" stroke="#f9e287" stroke-width="1.6" stroke-linecap="round" />
+      </g>
+    </svg>
+  </div>
+  <div class="butterfly-fly butterfly-fly--c" aria-hidden="true">
+    <svg class="butterfly-svg" viewBox="0 0 60 48" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(30 24)">
+        <path d="M 0 -2 Q -5 -7 -9 -9 Q -14 -11 -17 -7 Q -20 -3 -17 1 Q -14 5 -9 3 Q -5 1 0 -2 Z" stroke="#f9e287" fill="rgba(249,226,135,0.2)" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" />
+        <path d="M 0 -2 Q 5 -7 9 -9 Q 14 -11 17 -7 Q 20 -3 17 1 Q 14 5 9 3 Q 5 1 0 -2 Z" stroke="#f9e287" fill="rgba(249,226,135,0.2)" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" />
+        <line x1="0" y1="-2" x2="0" y2="12" stroke="#f9e287" stroke-width="1.6" stroke-linecap="round" />
+      </g>
+    </svg>
+  </div>
+
+  <header class="fixed top-0 w-full z-50 bg-white/30 backdrop-blur-md">
+    <div class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="font-handwritten text-4xl text-secondary lowercase">f. j.</a>
+      </div>
+      <nav class="hidden md:flex gap-10 items-center">
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="index.html">Home Page</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="skills.html">Skills</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-secondary border-b-2 border-primary-container pb-1" href="process.html" aria-current="page">Process</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="portfolio.html">Portfolio</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="connect.html">Connect</a>
+      </nav>
+      <a href="index.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0" aria-label="返回首页">
+        <img alt="Feng Jing" src="assets/avatar.png" width="40" height="40" class="w-full h-full object-cover" />
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto pt-40 pb-32 px-6">
+    <!-- Page Title -->
+    <div class="text-center mb-20 relative">
+      <div class="proc-title-wrap mx-auto mb-4">
+        <svg class="proc-title-deco proc-title-deco--a" viewBox="0 0 200 120" aria-hidden="true">
+          <path d="M 12 98 C 38 72 32 28 68 18 C 104 8 142 42 188 22" stroke="rgba(255,244,200,0.95)" stroke-width="5" />
+          <path d="M 24 102 C 48 78 44 36 76 26" stroke="rgba(255,250,220,0.75)" stroke-width="2.5" />
+        </svg>
+        <svg class="proc-title-deco proc-title-deco--b" viewBox="0 0 220 100" aria-hidden="true">
+          <path d="M 8 48 C 52 8 120 4 168 32 C 198 52 210 78 204 92" stroke="rgba(254,240,190,0.9)" stroke-width="5.5" />
+          <path d="M 28 56 C 70 22 128 18 176 44" stroke="rgba(255,248,210,0.65)" stroke-width="2.2" />
+        </svg>
+        <svg class="proc-title-deco proc-title-deco--c" viewBox="0 0 180 80" aria-hidden="true">
+          <path d="M 6 40 Q 88 4 172 36" stroke="rgba(253,236,175,0.7)" stroke-width="4" />
+        </svg>
+        <h1 class="proc-main-title text-7xl md:text-9xl">Work Experience</h1>
+      </div>
+      <p class="font-headline font-light tracking-widest text-on-surface-variant italic max-w-lg mx-auto">
+        From internship to freelance — a journey of growth, creativity &amp; impact.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-track relative pt-2 pb-4">
+      <!-- 三张卡片左右交错排列 -->
+      <!-- ===== Card 1: 左侧 ===== -->
+      <div class="reveal relative mb-4 md:mb-6" data-reveal>
+        <div class="hidden md:block card-connector card-connector--right"></div>
+        <div class="md:mr-[28%] md:pr-4 work-card" data-card>
+          <div class="card-float-shadow"></div>
+          <!-- Header -->
+          <div class="text-center mb-4">
+            <div class="company-badge mb-2">春雨教育有限公司</div>
+            <div class="role-label">品牌 PR 实习生</div>
+            <div class="flex items-center justify-center gap-2 mt-2">
+              <span class="material-symbols-outlined text-xs" style="font-size:14px;color:rgba(103,92,101,0.5)">calendar_today</span>
+              <span class="date-label">Dec 2023 – Feb 2024</span>
+            </div>
+          </div>
+          <!-- Achievements -->
+          <div class="space-y-3 text-center">
+            <div class="achievement-item">
+              <span>任职两个月内均<span class="font-bold text-secondary">超额完成指标</span></span>
+            </div>
+            <div class="achievement-item">
+              <span>与 <span class="count-up font-bold text-tertiary" data-target="160">0</span> 个达人建立良好关系并成功合作</span>
+            </div>
+            <div class="achievement-item">
+              <span>发布产品相关作品 <span class="count-up font-bold text-secondary" data-target="300">0</span> 篇左右</span>
+            </div>
+          </div>
+          <!-- AI Tools (hover) -->
+          <div class="ai-tools">
+            <span class="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant opacity-60 mr-1 self-center">Tools:</span>
+            <span class="ai-tool-chip">微信生态</span>
+            <span class="ai-tool-chip">内容运营</span>
+            <span class="ai-tool-chip">KOL 管理</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Card 2: 右侧 ===== -->
+      <div class="reveal reveal-delay-1 relative mb-4 md:mb-6" data-reveal>
+        <div class="hidden md:block card-connector card-connector--left"></div>
+        <div class="md:ml-[28%] md:pl-8 work-card" data-card>
+          <div class="card-float-shadow"></div>
+          <!-- Header -->
+          <div class="text-center mb-4">
+            <div class="company-badge mb-2">江苏缤纷假期国际旅行社</div>
+            <div class="role-label">美工</div>
+            <div class="flex items-center justify-center gap-2 mt-2">
+              <span class="material-symbols-outlined text-xs" style="font-size:14px;color:rgba(103,92,101,0.5)">calendar_today</span>
+              <span class="date-label">Apr 2024 – Mar 2026</span>
+            </div>
+          </div>
+          <!-- Achievements -->
+          <div class="space-y-3 text-center">
+            <div class="achievement-item">
+              <span>通过 PS 与 AI 工具实现海报 <span class="font-bold text-secondary">2–3 天出图</span></span>
+            </div>
+            <div class="achievement-item">
+              <span>月均 <span class="count-up font-bold text-tertiary" data-target="20">0</span> 条短视频，保障旺季物料供给</span>
+            </div>
+            <div class="achievement-item">
+              <span>小红书月曝光 <span class="count-up font-bold text-secondary" data-target="20000" data-suffix="+">0</span></span>
+            </div>
+            <div class="achievement-item">
+              <span>负责私域视觉运营，提升品牌整体形象</span>
+            </div>
+          </div>
+          <div class="ai-tools">
+            <span class="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant opacity-60 mr-1 self-center">Tools:</span>
+            <span class="ai-tool-chip">Photoshop</span>
+            <span class="ai-tool-chip">Illustrator</span>
+            <span class="ai-tool-chip">Midjourney</span>
+            <span class="ai-tool-chip">Jimeng</span>
+            <span class="ai-tool-chip">Stable Diffusion</span>
+            <span class="ai-tool-chip">CapCut</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Card 3: 左侧 ===== -->
+      <div class="reveal reveal-delay-2 relative mb-0" data-reveal>
+        <div class="hidden md:block card-connector card-connector--right"></div>
+        <div class="md:mr-[28%] md:pr-4 work-card" data-card>
+          <div class="card-float-shadow"></div>
+          <!-- Header -->
+          <div class="text-center mb-4">
+            <div class="company-badge bg-yellow-50/60 border-yellow-200/40 mb-2">个人项目 · 小红书 AI 账号</div>
+            <div class="role-label">AI 动漫账号运营</div>
+            <div class="flex items-center justify-center gap-2 mt-2">
+              <span class="material-symbols-outlined text-xs" style="font-size:14px;color:rgba(103,92,101,0.5)">calendar_today</span>
+              <span class="date-label">Aug 2025 – Mar 2026</span>
+            </div>
+          </div>
+          <!-- Achievements -->
+          <div class="space-y-3 text-center">
+            <div class="achievement-item">
+              <span>通过 AI 动漫账号 <span class="font-bold text-secondary">3 个月冷启动</span>积累粉丝</span>
+            </div>
+            <div class="achievement-item">
+              <span>3 个月内积累 <span class="count-up font-bold text-tertiary" data-target="1800">0</span> 粉丝</span>
+            </div>
+            <div class="achievement-item">
+              <span>获得 <span class="count-up font-bold text-secondary" data-target="8">0</span> 次品牌合作咨询，并达成稳定项目</span>
+            </div>
+          </div>
+          <div class="ai-tools">
+            <span class="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant opacity-60 mr-1 self-center">Tools:</span>
+            <span class="ai-tool-chip">Midjourney</span>
+            <span class="ai-tool-chip">Stable Diffusion</span>
+            <span class="ai-tool-chip">Jimeng</span>
+            <span class="ai-tool-chip">Seedance</span>
+            <span class="ai-tool-chip">剪映</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 下一页引导按钮 -->
+  <div class="pb-20 text-center relative z-20">
+    <a href="portfolio.html" class="next-page-btn">Next Page →</a>
+  </div>
+
+  <footer class="w-full py-16 flex flex-col items-center gap-4 bg-transparent">
+    <p class="font-body italic text-[10px] text-on-surface-variant opacity-60">
+      © 2024 The Ethereal Sketchbook. Crafted by Feng Jing with love &amp; AI.
+    </p>
+    <div class="mt-4 flex gap-3 opacity-20" aria-hidden="true">
+      <span class="material-symbols-outlined text-sm">favorite</span>
+      <span class="material-symbols-outlined text-sm">draw</span>
+      <span class="material-symbols-outlined text-sm">auto_awesome</span>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Scroll Reveal ----
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll("[data-reveal]").forEach((el) => revealObserver.observe(el));
+
+    // ---- Count-up ----
+    function easeOutQuart(t) {
+      return 1 - Math.pow(1 - t, 4);
+    }
+    function animateCountUp(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || "";
+      const duration = 1800;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutQuart(progress);
+        const current = Math.round(eased * target);
+        el.textContent = current.toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toLocaleString() + suffix;
+      }
+      requestAnimationFrame(tick);
+    }
+    const countObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCountUp(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    document.querySelectorAll(".count-up").forEach((el) => countObserver.observe(el));
+  </script>
+</body>
+</html>

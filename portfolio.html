@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Portfolio | Feng Jing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@200;400;600;700;800&amp;family=Manrope:wght@300;400;500;700&amp;family=Great+Vibes&amp;family=Indie+Flower&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            secondary: "#a53173",
+            tertiary: "#684cb6",
+            "primary-container": "#f9e287",
+            background: "#fff7fa",
+            "on-surface": "#392f38",
+            "on-surface-variant": "#675c65",
+          },
+          fontFamily: {
+            headline: ["Plus Jakarta Sans", "sans-serif"],
+            body: ["Manrope", "sans-serif"],
+            handwritten: ["Great Vibes", "cursive"],
+          },
+          animation: {
+            float: "float 6s ease-in-out infinite",
+          },
+          keyframes: {
+            float: {
+              "0%, 100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+
+    /* index.html 的背景样式 */
+    .bg-wash {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.35) 14%, transparent 28%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.82) 0%, transparent 12%),
+        linear-gradient(to left, rgba(255, 255, 255, 0.82) 0%, transparent 12%),
+        radial-gradient(ellipse 125% 95% at 50% 50%, transparent 38%, rgba(255, 255, 255, 0.45) 72%, rgba(255, 255, 255, 0.92) 100%),
+        radial-gradient(ellipse 100% 92% at 68% 48%, rgba(218, 232, 255, 0.62) 0%, rgba(228, 224, 248, 0.38) 44%, transparent 68%),
+        radial-gradient(ellipse 70% 60% at 88% 32%, rgba(230, 238, 255, 0.35) 0%, transparent 58%),
+        radial-gradient(ellipse 72% 62% at 6% 10%, rgba(255, 226, 238, 0.92) 0%, rgba(255, 234, 242, 0.45) 46%, transparent 72%),
+        linear-gradient(162deg, #fdfcfd 0%, #f5f7fc 38%, #f8f6fc 72%, #fefefe 100%);
+      filter: saturate(1.05) brightness(0.989);
+    }
+
+    .bg-floaties {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.2;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ctext x='10' y='40' font-size='14' fill='%23555' font-family='Georgia' opacity='0.7'%3E♪%3C/text%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M20 70 Q30 20 55 35 Q75 45 70 65' fill='none' stroke='%23555' stroke-width='1.2' opacity='0.5'/%3E%3C/svg%3E");
+      background-size: 140px 140px, 180px 180px;
+      background-position: 12% 18%, 78% 62%;
+      background-repeat: no-repeat;
+    }
+
+    /* 花瓣装饰 */
+    .petal {
+      position: absolute;
+      width: 14px;
+      height: 20px;
+      border-radius: 50% 50% 45% 55% / 58% 58% 42% 42%;
+      background: linear-gradient(145deg, rgba(248, 184, 208, 0.75), rgba(236, 160, 188, 0.45));
+      box-shadow: 0 1px 2px rgba(180, 120, 150, 0.15);
+      opacity: 0.65;
+      animation: petal-drift var(--drift, 22s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    .petal--1 { left: 12%; top: 18%; --drift: 12s; --delay: 0s; --rot: 18deg; }
+    .petal--2 { left: 78%; top: 28%; --drift: 10s; --delay: -2s; --rot: -12deg; }
+    .petal--3 { left: 52%; top: 12%; --drift: 13s; --delay: -4.5s; --rot: 35deg; }
+    .petal--4 { left: 88%; top: 62%; --drift: 11.5s; --delay: -6s; --rot: -25deg; }
+
+    @keyframes petal-drift {
+      0%, 100% { transform: translate(0, 0) rotate(var(--rot)); opacity: 0.52; }
+      25% { transform: translate(18px, -24px) rotate(calc(var(--rot) + 12deg)); opacity: 0.78; }
+      55% { transform: translate(-14px, 16px) rotate(calc(var(--rot) - 8deg)); opacity: 0.58; }
+      80% { transform: translate(10px, 8px) rotate(calc(var(--rot) + 6deg)); opacity: 0.72; }
+    }
+
+    /* 蝴蝶装饰 */
+    .butterfly-fly {
+      position: absolute;
+      width: 40px;
+      height: 34px;
+      will-change: transform;
+    }
+    .butterfly-fly--a { animation: butterfly-flight 32s ease-in-out infinite; }
+    .butterfly-fly--b { width: 34px; height: 29px; animation: butterfly-flight-b 28s ease-in-out infinite; animation-delay: -14s; }
+    .butterfly-svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 2px 4px rgba(200, 160, 40, 0.35)); }
+
+    @keyframes butterfly-flight {
+      0% { transform: translate(8vw, 72vh) rotate(-8deg) scale(1); }
+      50% { transform: translate(68vw, 52vh) rotate(10deg) scale(1.02); }
+      100% { transform: translate(8vw, 72vh) rotate(-8deg) scale(1); }
+    }
+    @keyframes butterfly-flight-b {
+      0% { transform: translate(78vw, 18vh) rotate(12deg) scale(0.92); }
+      50% { transform: translate(18vw, 58vh) rotate(-10deg) scale(1.04); }
+      100% { transform: translate(78vw, 18vh) rotate(12deg) scale(0.92); }
+    }
+
+    /* 手绘边框效果 */
+    .jitter-border {
+      border: 2px solid rgba(165, 49, 115, 0.3);
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      transition: all 0.5s ease;
+    }
+    .jitter-border:hover {
+      border-radius: 15px 255px 15px 225px/225px 15px 255px 15px;
+    }
+
+    /* 卡片动效 */
+    .card-hover {
+      transition: all 0.5s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+      z-index: 10;
+    }
+
+    /* 图片悬停完整显示 */
+    .card-hover .jitter-border {
+      overflow: hidden;
+    }
+    .card-hover:hover .jitter-border img {
+      width: 120%;
+      height: 120%;
+      max-width: none;
+      aspect-ratio: auto;
+      object-fit: cover;
+      margin: -10%;
+    }
+
+    /* 页面标题样式 */
+    .port-title-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      padding: 0 clamp(2rem, 8vw, 5rem);
+    }
+    .port-main-title {
+      font-family: "Great Vibes", cursive;
+      font-weight: 700;
+      color: #e878a8;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      position: relative;
+      z-index: 2;
+    }
+    .port-title-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
+    }
+    .port-title-deco path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .port-title-deco--a {
+      left: -4%;
+      top: 18%;
+      width: clamp(100px, 22vw, 200px);
+      height: auto;
+      opacity: 0.88;
+      transform: rotate(-8deg);
+    }
+    .port-title-deco--b {
+      right: -6%;
+      bottom: -8%;
+      width: clamp(120px, 26vw, 240px);
+      height: auto;
+      opacity: 0.82;
+      transform: rotate(6deg);
+    }
+  </style>
+</head>
+<body class="font-body watercolor-bg text-on-surface selection:bg-primary-container min-h-screen relative">
+  <!-- index.html 的背景层 -->
+  <div class="bg-wash" aria-hidden="true"></div>
+  <div class="bg-floaties" aria-hidden="true"></div>
+
+  <!-- 花瓣 + 蝴蝶装饰 -->
+  <div class="fixed inset-0 pointer-events-none z-10 overflow-hidden">
+    <span class="petal petal--1"></span>
+    <span class="petal petal--2"></span>
+    <span class="petal petal--3"></span>
+    <span class="petal petal--4"></span>
+    <div class="butterfly-fly butterfly-fly--a">
+      <svg class="butterfly-svg" viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(28 22)">
+          <ellipse cx="-13" cy="0" rx="15" ry="11" fill="#f7dc5c" stroke="#d4b82a" stroke-width="0.7" transform="rotate(-22)" />
+          <ellipse cx="13" cy="0" rx="15" ry="11" fill="#f7dc5c" stroke="#d4b82a" stroke-width="0.7" transform="rotate(22)" />
+          <line x1="0" y1="-4" x2="0" y2="14" stroke="#c9a820" stroke-width="1.1" stroke-linecap="round" />
+        </g>
+      </svg>
+    </div>
+    <div class="butterfly-fly butterfly-fly--b">
+      <svg class="butterfly-svg" viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(28 22)">
+          <ellipse cx="-12" cy="0" rx="13" ry="10" fill="#ffe566" stroke="#d4b82a" stroke-width="0.65" transform="rotate(-26)" />
+          <ellipse cx="12" cy="0" rx="13" ry="10" fill="#ffe566" stroke="#d4b82a" stroke-width="0.65" transform="rotate(26)" />
+          <line x1="0" y1="-3" x2="0" y2="12" stroke="#c9a820" stroke-width="1" stroke-linecap="round" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- process.html 风格的导航 -->
+  <header class="fixed top-0 w-full z-50 bg-white/30 backdrop-blur-md">
+    <div class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="font-handwritten text-4xl text-secondary lowercase">f. j.</a>
+      </div>
+      <nav class="hidden md:flex gap-10 items-center">
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="index.html">Home Page</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="skills.html">Skills</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="process.html">Process</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-secondary border-b-2 border-primary-container pb-1" href="portfolio.html">Portfolio</a>
+        <a class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-secondary transition-colors" href="connect.html">Connect</a>
+      </nav>
+      <a href="index.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0" aria-label="返回首页">
+        <img alt="Feng Jing" src="assets/avatar.png" width="40" height="40" class="w-full h-full object-cover" />
+      </a>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="pt-40 pb-20 relative z-20 max-w-7xl mx-auto px-6">
+    <!-- 标题区域 -->
+    <div class="text-center mb-20 relative">
+      <div class="port-title-wrap mx-auto mb-4">
+        <svg class="port-title-deco port-title-deco--a" viewBox="0 0 200 120" aria-hidden="true">
+          <path d="M 12 98 C 38 72 32 28 68 18 C 104 8 142 42 188 22" stroke="rgba(255,244,200,0.95)" stroke-width="5" />
+          <path d="M 24 102 C 48 78 44 36 76 26" stroke="rgba(255,250,220,0.75)" stroke-width="2.5" />
+        </svg>
+        <svg class="port-title-deco port-title-deco--b" viewBox="0 0 220 100" aria-hidden="true">
+          <path d="M 8 48 C 52 8 120 4 168 32 C 198 52 210 78 204 92" stroke="rgba(254,240,190,0.9)" stroke-width="5.5" />
+          <path d="M 28 56 C 70 22 128 18 176 44" stroke="rgba(255,248,210,0.65)" stroke-width="2.2" />
+        </svg>
+        <h1 class="port-main-title text-7xl md:text-9xl">Portfolio</h1>
+      </div>
+      <p class="font-headline font-light tracking-widest text-on-surface-variant italic max-w-lg mx-auto">
+        A collection of digital whispers and visual dreams.
+      </p>
+    </div>
+
+    <!-- Section: Poster Design -->
+    <section class="mb-32">
+      <div class="flex items-center gap-4 mb-12">
+        <h2 class="font-handwritten text-secondary text-4xl md:text-5xl">Poster Design</h2>
+        <div class="h-px flex-grow bg-pink-200/30"></div>
+        <div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary">palette</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+        <!-- Card 1 -->
+        <div class="group relative md:translate-y-12 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="Poster design 1" src="assets/portfolio-poster/1.png" />
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="group relative lg:-translate-y-8 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="Poster design 2" src="assets/portfolio-poster/2.png" />
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="group relative md:translate-y-24 lg:translate-y-4 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="Poster design 3" src="assets/portfolio-poster/3.png" />
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="group relative transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="Poster design 4" src="assets/portfolio-poster/4.png" />
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="group relative md:-translate-y-8 lg:translate-y-20 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="Poster design 5" src="assets/portfolio-poster/5.png" />
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="group relative lg:-translate-y-12 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="Poster design 6" src="assets/portfolio-poster/6.png" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: AI Character Design -->
+    <section class="mb-32">
+      <div class="flex items-center gap-4 mb-12 flex-row-reverse">
+        <h2 class="font-handwritten text-secondary text-4xl md:text-5xl">AI Character Design</h2>
+        <div class="h-px flex-grow bg-purple-200/30"></div>
+        <div class="w-12 h-12 rounded-full bg-tertiary/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-tertiary">smart_toy</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20">
+        <!-- AI Card 1 -->
+        <div class="group relative lg:translate-y-16 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="AI Character 1" src="assets/portfolio-ai/7.png" />
+          </div>
+        </div>
+        <!-- AI Card 2 -->
+        <div class="group relative md:-translate-y-6 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="AI Character 2" src="assets/portfolio-ai/8.png" />
+          </div>
+        </div>
+        <!-- AI Card 3 -->
+        <div class="group relative lg:translate-y-8 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="AI Character 3" src="assets/portfolio-ai/9.png" />
+          </div>
+        </div>
+        <!-- AI Card 4 -->
+        <div class="group relative md:translate-y-12 lg:translate-y-24 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="AI Character 4" src="assets/portfolio-ai/10.png" />
+          </div>
+        </div>
+        <!-- AI Card 5 -->
+        <div class="group relative lg:-translate-y-12 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="AI Character 5" src="assets/portfolio-ai/11.png" />
+          </div>
+        </div>
+        <!-- AI Card 6 -->
+        <div class="group relative md:translate-y-6 lg:translate-y-4 transition-all duration-500 card-hover">
+          <div class="jitter-border p-2 bg-white/60 backdrop-blur-sm group-hover:bg-white/80">
+            <img class="w-full aspect-[3/4] object-cover rounded-sm" alt="AI Character 6" src="assets/portfolio-ai/12.png" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 下一页引导按钮 -->
+  <div class="pb-20 text-center relative z-20">
+    <a href="connect.html" class="next-page-btn">Next Page →</a>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="w-full py-16 px-10 z-20 relative">
+    <div class="flex justify-center max-w-7xl mx-auto">
+      <p class="font-body text-sm italic text-on-surface-variant">© 2024 The Ethereal Sketchbook. Hand-drawn with love.</p>
+    </div>
+  </footer>
+</body>
+</html>

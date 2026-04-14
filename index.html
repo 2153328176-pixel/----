@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feng Jing — AIGC Visual Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Indie+Flower&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-wash" aria-hidden="true"></div>
+  <div class="bg-floaties" aria-hidden="true"></div>
+
+  <!-- 花瓣 + 黄蝴蝶（装饰层） -->
+  <div class="scene-decor" aria-hidden="true">
+    <span class="petal petal--1"></span>
+    <span class="petal petal--2"></span>
+    <span class="petal petal--3"></span>
+    <span class="petal petal--4"></span>
+    <div class="butterfly-fly butterfly-fly--a">
+      <svg class="butterfly-svg" viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(28 22)">
+          <ellipse cx="-13" cy="0" rx="15" ry="11" fill="#f7dc5c" stroke="#d4b82a" stroke-width="0.7" transform="rotate(-22)" />
+          <ellipse cx="13" cy="0" rx="15" ry="11" fill="#f7dc5c" stroke="#d4b82a" stroke-width="0.7" transform="rotate(22)" />
+          <line x1="0" y1="-4" x2="0" y2="14" stroke="#c9a820" stroke-width="1.1" stroke-linecap="round" />
+        </g>
+      </svg>
+    </div>
+    <div class="butterfly-fly butterfly-fly--b">
+      <svg class="butterfly-svg butterfly-svg--sm" viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(28 22)">
+          <ellipse cx="-12" cy="0" rx="13" ry="10" fill="#ffe566" stroke="#d4b82a" stroke-width="0.65" transform="rotate(-26)" />
+          <ellipse cx="12" cy="0" rx="13" ry="10" fill="#ffe566" stroke="#d4b82a" stroke-width="0.65" transform="rotate(26)" />
+          <line x1="0" y1="-3" x2="0" y2="12" stroke="#c9a820" stroke-width="1" stroke-linecap="round" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <aside class="side-rule" aria-hidden="true"></aside>
+
+  <main class="hero">
+    <header class="brand content-reveal content-reveal--brand">
+      <span class="brand-initials">f. j.</span>
+    </header>
+
+    <section class="content content-reveal">
+      <h1 class="name">
+        <span class="name-text">Feng Jing</span>
+        <span class="name-underline" aria-hidden="true"></span>
+      </h1>
+      <p class="role">AIGC Visual Designer</p>
+      <p class="blurb">
+        探索 AI 与视觉设计的交汇，用创意赋能每一个画面
+      </p>
+      <a class="cta" href="skills.html">View My Work</a>
+    </section>
+
+    <div class="illustration avatar-float" aria-hidden="true">
+      <div class="avatar-frame">
+        <img
+          class="avatar-img"
+          src="assets/avatar.png"
+          alt=""
+          width="640"
+          height="640"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </main>
+</body>
+</html>
